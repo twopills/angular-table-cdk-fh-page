@@ -36,7 +36,6 @@
             </span>
             <ng-container *ngIf="config.displayedColumns[i]?.sorting">
               <mat-icon
-                style="width:auto"
                 (click)="
                   config.displayedColumns[i]?.sorting
                     ? sortElement(config.displayedColumns[i], 'asc')
@@ -48,13 +47,12 @@
                     'color'
                   )
                 }"
-                style="font-size: 1.2em;cursor:pointer"
+                style="font-size: 1.2em;cursor:pointer;width:auto;"
                 aria-hidden="false"
                 aria-label="Arrow Upward  icon"
                 >arrow_upward</mat-icon
               >
               <mat-icon
-                style="width:auto"
                 (click)="
                   config.displayedColumns[i]?.sorting
                     ? sortElement(config.displayedColumns[i], 'desc')
@@ -66,7 +64,7 @@
                     'color'
                   )
                 }"
-                style="font-size: 1.2em;cursor:pointer"
+                style="font-size: 1.2em;cursor:pointer;width:auto;"
                 aria-hidden="false"
                 aria-label="Arrow Upward  icon"
                 >arrow_downward</mat-icon
