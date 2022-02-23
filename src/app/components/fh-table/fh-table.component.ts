@@ -164,10 +164,11 @@ export class FhTableComponent {
       ...this.config.paginationOptions,
       pageSize,
     };
+    const sortElement = this.config.activeSortElement;
     console.log('pagi: ', event);
     this._emitValue({
       pagination: event,
-      sortElement: this.config.activeSortElement,
+      sortElement,
     });
   }
 

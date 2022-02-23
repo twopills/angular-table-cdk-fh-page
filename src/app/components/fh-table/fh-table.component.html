@@ -35,27 +35,42 @@
               >{{ config.displayedColumns[i]?.name }}
             </span>
             <ng-container *ngIf="config.displayedColumns[i]?.sorting">
-              <span
+              <mat-icon
+                style="width:auto"
                 (click)="
                   config.displayedColumns[i]?.sorting
                     ? sortElement(config.displayedColumns[i], 'asc')
                     : null
                 "
+                [ngStyle]="{
+                  color: arrowSortIconStyle(
+                    config.displayedColumns[i]?.direction,
+                    'color'
+                  )
+                }"
+                style="font-size: 1.2em;cursor:pointer"
+                aria-hidden="false"
+                aria-label="Arrow Upward  icon"
+                >arrow_upward</mat-icon
               >
-                <mat-icon
-                  [ngStyle]="{
-                    color: arrowSortIconStyle(
-                      config.displayedColumns[i]?.direction,
-                      'color'
-                    )
-                  }"
-                  style="font-size: 1.2em;cursor:pointer"
-                  aria-hidden="false"
-                  aria-label="Arrow Upward  icon"
-                  >arrow_upward</mat-icon
-                >
-                <br />{{ config.displayedColumns[i]?.direction | json }}
-              </span>
+              <mat-icon
+                style="width:auto"
+                (click)="
+                  config.displayedColumns[i]?.sorting
+                    ? sortElement(config.displayedColumns[i], 'desc')
+                    : null
+                "
+                [ngStyle]="{
+                  color: arrowSortIconStyle(
+                    config.displayedColumns[i]?.direction,
+                    'color'
+                  )
+                }"
+                style="font-size: 1.2em;cursor:pointer"
+                aria-hidden="false"
+                aria-label="Arrow Upward  icon"
+                >arrow_downward</mat-icon
+              >
             </ng-container>
           </div>
           <!-- <span
