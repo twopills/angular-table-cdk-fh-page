@@ -1,0 +1,9 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}

@@ -1,0 +1,10 @@
+<ng-container *ngIf="defaultSettings">
+  <mat-paginator
+    [length]="defaultSettings.length"
+    [pageSize]="defaultSettings.pageSize"
+    [pageSizeOptions]="defaultSettings.pageSizeOptions"
+    aria-label="Select page"
+    (page)="takeEvent($event)"
+  >
+  </mat-paginator>
+</ng-container>

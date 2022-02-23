@@ -1,0 +1,11 @@
+table {
+  width: 100%;
+}
+
+th {
+  text-align: left;
+}
+
+.highlight {
+  background-color: rgba(85, 85, 85, 0.123) !important;
+}

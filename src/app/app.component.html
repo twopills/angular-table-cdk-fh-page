@@ -1,0 +1,7 @@
+<ng-container *ngIf="config">
+  <app-fh-table
+    [configTable]="config"
+    (tableEmitter)="receiverOutput($event)"
+    (tableEmitter$)="receiverTableEmitter$.next($event)"
+  ></app-fh-table>
+</ng-container>

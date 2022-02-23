@@ -1,0 +1,101 @@
+<ng-container *ngIf="config.dataSource">
+  <table
+    cellspacing="0"
+    cellpadding="3"
+    cdk-table
+    [dataSource]="config.dataSource"
+  >
+    <ng-container
+      *ngFor="
+        let key of config.displayedColumns | getKeys: 'bind';
+        let i = index;
+        trackBy: identify
+      "
+    >
+      <ng-container [cdkColumnDef]="key">
+        <th
+          (mouseover)="
+            !config.displayedColumns[i]?.direction
+              ? (config.displayedColumns[i].iconIsVisible =
+                  !config.displayedColumns[i].iconIsVisible)
+              : config.displayedColumns[i]?.direction
+          "
+          cdk-header-cell
+          *cdkHeaderCellDef
+          class=""
+        >
+          <div class="d-flex" style="">
+            <span
+              style="font-size: 1.1rem;text-transform: uppercase;"
+              [ngStyle]="
+                config.displayedColumns[i]?.sorting
+                  ? { 'text-decoration': 'unset' }
+                  : { color: 'black' }
+              "
+              >{{ config.displayedColumns[i]?.name }}
+            </span>
+            <ng-container *ngIf="config.displayedColumns[i]?.sorting">
+              <span
+                (click)="
+                  config.displayedColumns[i]?.sorting
+                    ? sortElement(config.displayedColumns[i], 'asc')
+                    : null
+                "
+              >
+                <mat-icon
+                  [ngStyle]="{
+                    color: arrowSortIconStyle(
+                      config.displayedColumns[i]?.direction,
+                      'color'
+                    )
+                  }"
+                  style="font-size: 1.2em;cursor:pointer"
+                  aria-hidden="false"
+                  aria-label="Arrow Upward  icon"
+                  >arrow_upward</mat-icon
+                >
+                <br />{{ config.displayedColumns[i]?.direction | json }}
+              </span>
+            </ng-container>
+          </div>
+          <!-- <span
+              (click)="
+                config.displayedColumns[i]?.sorting
+                  ? sortElement(config.displayedColumns[i], 'desc')
+                  : null
+              "
+            > -->
+          <!-- <mat-icon aria-hidden="false" aria-label="Arrow Downward icon"
+                  >arrow_downward</mat-icon
+                > -->
+          <!-- </span> -->
+        </th>
+        <td cdk-cell *cdkCellDef="let elem" (click)="selectedCell(elem[key])">
+          {{ elem[key] }}
+        </td>
+      </ng-container>
+    </ng-container>
+    <tr
+      cdk-header-row
+      *cdkHeaderRowDef="config.displayedColumns | getKeys: 'bind'"
+    ></tr>
+    <tr
+      *cdkRowDef="let row; columns: config.displayedColumns | getKeys: 'bind'"
+      cdk-row
+      style="cursor:pointer"
+      [ngClass]="{ highlight: row === hoverRow }"
+      (mouseover)="highlightElem(row)"
+      (mouseout)="hoverRow = null"
+      (click)="selectedRow(row)"
+    ></tr>
+  </table>
+  <body class="mat-typography mat-app-background">
+    <app-fh-paginator
+      *ngIf="
+        config.paginationOptions.length > config.paginationOptions.pageSize
+      "
+      [pagination]="config.paginationOptions"
+      (emitPage)="takeEventFromPaginator($event)"
+    ></app-fh-paginator>
+  </body>
+</ng-container>
