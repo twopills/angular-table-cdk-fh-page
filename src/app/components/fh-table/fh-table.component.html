@@ -71,17 +71,6 @@
               >
             </ng-container>
           </div>
-          <!-- <span
-              (click)="
-                config.displayedColumns[i]?.sorting
-                  ? sortElement(config.displayedColumns[i], 'desc')
-                  : null
-              "
-            > -->
-          <!-- <mat-icon aria-hidden="false" aria-label="Arrow Downward icon"
-                  >arrow_downward</mat-icon
-                > -->
-          <!-- </span> -->
         </th>
         <td cdk-cell *cdkCellDef="let elem" (click)="selectedCell(elem[key])">
           {{ elem[key] }}
